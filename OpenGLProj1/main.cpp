@@ -1,5 +1,10 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
+void processInput(GLFWwindow* window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+}
 
 int main(void)
 {
@@ -22,10 +27,12 @@ int main(void)
     glViewport(0, 0, width, height);
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-
+   
     /* Loop until the user closes the window */
+    
     while (!glfwWindowShouldClose(window))
     {
+        processInput(window);
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
